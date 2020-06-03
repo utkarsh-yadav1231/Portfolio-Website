@@ -1,0 +1,12 @@
+.container111{
+    max-width: 550px;
+    margin: 0 auto;
+    background: #000000;
+    font-size: 25px;
+    padding: 30px;
+
+}
+.parallax{
+    min-height: 400px ;
+    background: transparent;
+}
