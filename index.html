@@ -32,6 +32,7 @@
 
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper">
 
@@ -42,7 +43,8 @@
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="row">
                     <div class="col order-xl-first ">
-                        <button class="css-q4q4imy e1ad35nk4"  onclick="window.location.href='about/index.html'"> About Me </button>
+                        <button class="css-q4q4imy e1ad35nk4" id="btn-nav-home" onclick="window.location.href='about/index.html'"> About Me </button>
+                        <button class="css-q4q4imy e1ad35nk4" id="btn-nav-home" onclick="window.location.href='portfolio/index.html'"> Portfolio </button>
                     </div>
                     <div class="justify-content-end">
                         <div id="typed-strings">
@@ -79,7 +81,7 @@
     </div>
 
 </section><section class="sec-type-2"><div class="container"><div class="main-wrapper"><div class="sec-heading"><style data-emotion-css="p39492">.css-p39492{font-family:"Raleway",sans-serif;display:inline-block;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;font-size:2.4rem;font-weight:600;padding:10px;margin-bottom:0px;border-top:1px solid #ff0077;border-bottom:1px solid #ff0077;}</style><h1 class="css-p39492 e1ad35nk1">Who am I?</h1></div><div class="sec-desc"><p>Hello World, I'm an engineer who likes to code. My goal is to build applications that are scalable and efficient under the hood while providing engaging, pixel-perfect user experiences. Also I'm a problem solver interested in working on ambitious projects with positive people.</p><div class="btn-wrapper"><style data-emotion-css="1k8p22u">.css-1k8p22u{color:#ffffff;font-size:1.2rem;font-family:"Raleway",sans-serif;font-weight:normal;line-height:1;margin:0 0.5rem;padding:0.25rem;-webkit-text-decoration:none;text-decoration:none;}.css-1k8p22u.current-page{border-bottom:2px solid #ffffff;}.css-1k8p22u:last-of-type{margin-right:0;}</style><a class="css-1k8p22u e1ad35nk0" href="about/index.html"><style data-emotion-css="1gejdie">.css-1gejdie{background-color:transparent;border:3px solid #fff200;padding:10px 20px;font-weight:normal;font-size:1.2em;border-radius:0.25rem;color:#ffffff;cursor:pointer;}</style>
-        <button class="css-1gejdie e1ad35nk3"> Know More About Me  </button></a></div></div></div></div></section>
+        <button class="css-1gejdie e1ad35nk3" id="btn-nav-home"> Know More About Me  </button></a></div></div></div></div></section>
 
         <style data-emotion-css="ac9hmh">.css-ac9hmh{background-position:top center;background-size:cover;height:100%;}</style>
     <section class="css-ac9hmh e1ad35nk4 gbi--884076057-4s58jmtg71UKshMy68cYWR" alt="Section Background Image" style="background-position:50% 0%;background-repeat:no-repeat;background-size:cover;position:relative;opacity:0.99;" ><style>
@@ -127,25 +129,30 @@
 
                 <div class="card-grid" style="text-align:center;margin-top:2rem"><div class="columns is-mobile is-centered">
 
+                <div class="column is-one-third-desktop is-one-third-tablet" >
+                  <div class="card text-center" id="btn-nav-home">
+                    <div class="card-icon">
+                      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="fa-icon fa-2x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+                    </div>
+                    <div class="card-title">
+                      <style data-emotion-css="151vyw5">
+                          .css-151vyw5{font-family:"Raleway",sans-serif;display:inline-block;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;font-size:1.4rem;font-weight:600;padding:10px;margin-bottom:0px;position:relative ;}
+                          .css-151vyw5::after{content:"";background-color:#ff0077;position:relative;height:3px;width:40px;right:37%;bottom:0px;}
 
-
-                <div class="column is-one-third-desktop is-one-third-tablet">
-                        <div class="card text-center"><div class="card-icon"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="fa-icon fa-2x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg></div>
-
-                        <div class="card-title"><style data-emotion-css="151vyw5">
-                        .css-151vyw5{font-family:"Raleway",sans-serif;display:inline-block;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;font-size:1.4rem;font-weight:600;padding:10px;margin-bottom:0px;position:relative ;}
-                        .css-151vyw5::after{content:"";background-color:#ff0077;position:relative;height:3px;width:40px;right:37%;bottom:0px;}
-
-                        @media only screen and (max-width:900px)
-                        {.css-151vyw5::after{right:39%;}
-                        }
-                        @media only screen and (max-width:768px)
-                        {.css-151vyw5::after{right:37%;}
-                        }
-                </style>
-                        <h3 class="css-151vyw5 e1ad35nk2">Email me at</h3>
+                          @media only screen and (max-width:900px)
+                          {.css-151vyw5::after{right:39%;}
+                          }
+                          @media only screen and (max-width:768px)
+                          {.css-151vyw5::after{right:37%;}
+                          }
+                      </style>
+                      <h3 class="css-151vyw5 e1ad35nk2">Email me at</h3>
+                    </div>
+                    <div class="card-desc">
+                      <p><a href="mailto:utkarshyadav1231@gmail.com">utkarshyadav1231@gmail.com</a></p>
+                    </div>
+                  </div>
                 </div>
-                                <div class="card-desc"><p><a href="mailto:utkarshyadav1231@gmail.com">utkarshyadav1231@gmail.com</a></p></div></div></div>
 
 
         </div></div>
@@ -160,7 +167,15 @@
 </main><footer class="sec-type-1"><div class="container"><div class="columns is-desktop"><div class="column is-full-tablet is-half-desktop"><div class="social-icon-list">
         <div class="icons"><a href="https://www.linkedin.com/in/utkarshyadav1231/" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg></a></div>
 
-            <div class="icons"><a href="https://github.com/utkarsh-yadav1231" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></div><div class="icons"><a href="https://stackoverflow.com/users/13637293/utkarsh-yadav" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"></path></svg></a></div><div class="icons"><a href="https://www.facebook.com/imearsh98/" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg></a></div><div class="icons"><a href="https://www.instagram.com/i_am_utkarsh__/" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></a></div></div></div><div class="column is-full-tablet is-half-desktop"><div class="copyright"><p>© 2022 <em>Utkarsh Yadav</em>. All Rights Reserved.</p></div></div></div><div class="lower-footer"><p>Made with <svg stroke="currentColor" fill="Red" stroke-width="0" viewBox="0 0 512 512" class="fa-icon fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg> in India</p></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div>
+            <div class="icons"><a href="https://github.com/utkarsh-yadav1231" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></div><div class="icons"><a href="https://stackoverflow.com/users/13637293/utkarsh-yadav" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 384 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"></path></svg></a></div><div class="icons"><a href="https://www.facebook.com/imearsh98/" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg></a></div><div class="icons"><a href="https://www.instagram.com/i_am_utkarsh__/" target="_blank" rel="noopener noreferrer"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="fa-1-5x" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></a></div></div></div><div class="column is-full-tablet is-half-desktop"><div class="copyright"><p>© 2022 <em>Utkarsh Yadav</em>. All Rights Reserved.</p></div></div></div>
+            
+            <div class="lower-footer">
+              <p>Made with 
+                  <svg stroke="currentColor" fill="Red" stroke-width="0" viewBox="0 150 512 512" class="fa-icon fa-1-4.5x" height="1.7em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path>
+                  </svg> in India
+              </p>
+          </div>
+          </div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div>
 <script>
       if(true) {
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -182,6 +197,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="js/bootstrap.js"></script>
+
 
 </body>
 
