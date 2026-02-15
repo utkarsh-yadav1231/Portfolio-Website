@@ -14318,45 +14318,184 @@
             </div>
 
             <!-- LeetCode Stats Starts-->
-            <!-- Profile Header -->
-            <div style="
-  width: 70%;
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 1.2rem 1.8rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  border: 1px solid #333;
-  flex-wrap: wrap;
-">
-              <!-- Avatar -->
-              <img src="https://assets.leetcode.com/users/utcarsh/avatar_1721934450.png" alt="LeetCode Avatar"
-                style="width: 72px; height: 72px; border-radius: 50%; border: 3px solid #FFA116; object-fit: cover;" />
+            <!-- LeetCode Stats Section -->
+            <div
+              style="display: flex; flex-direction: column; align-items: center; margin-top: 2.5rem; padding-bottom: 2rem; width: 100%;">
 
-              <!-- Info -->
-              <div style="flex: 1;">
-                <div style="display:flex; align-items:center; gap: 1rem; flex-wrap: wrap;">
-                  <span
-                    style="font-family:'Roboto Mono',monospace; font-size:1.3rem; color:#FFA116; font-weight:bold;">utcarsh</span>
-                  <span id="lc-rank" style="font-family:'Roboto Mono',monospace; font-size:0.95rem; color:#aaa;">Loading
-                    rank...</span>
+              <!-- Main Card -->
+              <div style="
+    width: 70%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%);
+    border-radius: 16px;
+    padding: 1.8rem 2rem;
+    margin-bottom: 0;
+    border: 1px solid #2a2a2a;
+    box-shadow: 0 0 30px rgba(255, 161, 22, 0.08), 0 4px 24px rgba(0,0,0,0.5);
+  ">
+
+                <!-- Top Row: Avatar + Info + Link -->
+                <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.4rem;">
+
+                  <!-- Avatar -->
+                  <div style="position:relative; flex-shrink:0;">
+                    <img src="https://assets.leetcode.com/users/utcarsh/avatar_1721934450.png" alt="LeetCode Avatar"
+                      style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #FFA116; object-fit: cover; display:block;" />
+                    <div style="
+          position:absolute; bottom:-2px; right:-2px;
+          background:#FFA116; border-radius:50%;
+          width:22px; height:22px;
+          display:flex; align-items:center; justify-content:center;
+          font-size:12px;">⚡</div>
+                  </div>
+
+                  <!-- Name + Rank -->
+                  <div style="flex:1;">
+                    <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:0.4rem;">
+                      <a href="https://leetcode.com/u/utcarsh/" target="_blank" rel="noopener noreferrer"
+                        style="font-family:'Roboto Mono',monospace; font-size:1.4rem; color:#FFA116; font-weight:bold; text-decoration:none; border-bottom: 2px solid transparent; transition: border-color 0.2s;"
+                        onmouseover="this.style.borderBottomColor='#FFA116'"
+                        onmouseout="this.style.borderBottomColor='transparent'">
+                        utcarsh
+                      </a>
+                      <span id="lc-rank"
+                        style="font-family:'Roboto Mono',monospace; font-size:0.9rem; color:#888; background:#222; padding:3px 10px; border-radius:20px; border:1px solid #333;">
+                        Loading...
+                      </span>
+                    </div>
+                    <div style="font-family:'Roboto Mono',monospace; font-size:0.8rem; color:#555;">
+                      LeetCode Profile · Competitive Programming
+                    </div>
+                  </div>
+
+                  <!-- View Profile -->
+                  <a href="https://leetcode.com/u/utcarsh/" target="_blank" rel="noopener noreferrer" style="font-family:'Roboto Mono',monospace; font-size:0.82rem; color:#FFA116; white-space:nowrap;
+               border:1px solid #FFA116; padding:6px 14px; border-radius:20px; text-decoration:none;
+               transition:all 0.2s;" onmouseover="this.style.background='#FFA116'; this.style.color='#000'"
+                    onmouseout="this.style.background='transparent'; this.style.color='#FFA116'">
+                    View Profile →
+                  </a>
                 </div>
-                <div style="margin-top: 0.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                  <span id="lc-badges"
-                    style="font-family:'Roboto Mono',monospace; font-size:0.9rem; color:#ccc;">Loading...</span>
-                  <span id="lc-solved"
-                    style="font-family:'Roboto Mono',monospace; font-size:0.9rem; color:#ccc;"></span>
-                  <span id="lc-active-days"
-                    style="font-family:'Roboto Mono',monospace; font-size:0.9rem; color:#ccc;"></span>
+
+                <!-- Divider -->
+                <div
+                  style="height:1px; background:linear-gradient(90deg, transparent, #333, transparent); margin-bottom:1.4rem;">
                 </div>
+
+                <!-- Stats Row -->
+                <div
+                  style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1.6rem; justify-content:space-between;">
+
+                  <!-- Total Solved -->
+                  <div style="
+        flex:1; min-width:120px;
+        background:#0d0d0d; border-radius:12px; padding:1rem 1.2rem;
+        border:1px solid #222; text-align:center;
+      ">
+                    <div id="lc-total"
+                      style="font-family:'Roboto Mono',monospace; font-size:1.8rem; font-weight:bold; color:#FFA116;">--
+                    </div>
+                    <div style="font-family:'Roboto Mono',monospace; font-size:0.75rem; color:#666; margin-top:4px;">
+                      Total Solved</div>
+                  </div>
+
+                  <!-- Easy -->
+                  <div style="
+        flex:1; min-width:100px;
+        background:#0d0d0d; border-radius:12px; padding:1rem 1.2rem;
+        border:1px solid #1a3a1a; text-align:center;
+      ">
+                    <div id="lc-easy"
+                      style="font-family:'Roboto Mono',monospace; font-size:1.8rem; font-weight:bold; color:#00b8a3;">--
+                    </div>
+                    <div
+                      style="font-family:'Roboto Mono',monospace; font-size:0.75rem; color:#00b8a3; margin-top:4px; opacity:0.7;">
+                      Easy</div>
+                  </div>
+
+                  <!-- Medium -->
+                  <div style="
+        flex:1; min-width:100px;
+        background:#0d0d0d; border-radius:12px; padding:1rem 1.2rem;
+        border:1px solid #3a2e00; text-align:center;
+      ">
+                    <div id="lc-medium"
+                      style="font-family:'Roboto Mono',monospace; font-size:1.8rem; font-weight:bold; color:#FFA116;">--
+                    </div>
+                    <div
+                      style="font-family:'Roboto Mono',monospace; font-size:0.75rem; color:#FFA116; margin-top:4px; opacity:0.7;">
+                      Medium</div>
+                  </div>
+
+                  <!-- Hard -->
+                  <div style="
+        flex:1; min-width:100px;
+        background:#0d0d0d; border-radius:12px; padding:1rem 1.2rem;
+        border:1px solid #3a0d0d; text-align:center;
+      ">
+                    <div id="lc-hard"
+                      style="font-family:'Roboto Mono',monospace; font-size:1.8rem; font-weight:bold; color:#ef4743;">--
+                    </div>
+                    <div
+                      style="font-family:'Roboto Mono',monospace; font-size:0.75rem; color:#ef4743; margin-top:4px; opacity:0.7;">
+                      Hard</div>
+                  </div>
+
+                  <!-- Active Days -->
+                  <div style="
+        flex:1; min-width:120px;
+        background:#0d0d0d; border-radius:12px; padding:1rem 1.2rem;
+        border:1px solid #1a1a3a; text-align:center;
+      ">
+                    <div id="lc-active-days"
+                      style="font-family:'Roboto Mono',monospace; font-size:1.8rem; font-weight:bold; color:#a78bfa;">--
+                    </div>
+                    <div
+                      style="font-family:'Roboto Mono',monospace; font-size:0.75rem; color:#a78bfa; margin-top:4px; opacity:0.7;">
+                      Active Days</div>
+                  </div>
+
+                </div>
+
+                <!-- Divider -->
+                <div
+                  style="height:1px; background:linear-gradient(90deg, transparent, #333, transparent); margin-bottom:1.2rem;">
+                </div>
+
+                <!-- Heatmap Label -->
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+                  <span style="font-family:'Roboto Mono',monospace; font-size:0.8rem; color:#666;">
+                    📊 Submission Activity · Last 365 Days (2025–2026)
+                  </span>
+                  <span style="font-family:'Roboto Mono',monospace; font-size:0.72rem; color:#444;">
+                    Less ◻◼◼◼◼ More
+                  </span>
+                </div>
+
+                <!-- Heatmap Canvas -->
+                <div style="width:100%; overflow-x:auto;">
+                  <canvas id="lc-heatmap" style="width:100%; border-radius:8px;"></canvas>
+                </div>
+
               </div>
 
+              <!-- Bottom Button -->
               <a href="https://leetcode.com/u/utcarsh/" target="_blank" rel="noopener noreferrer"
-                style="font-family:'Roboto Mono',monospace; font-size:0.85rem; color:#FFA116; white-space:nowrap;">
-                View Profile →
+                style="margin-top: 1.4rem;">
+                <button onmouseover="this.style.background='#FFA116'; this.style.color='#000'"
+                  onmouseout="this.style.background='transparent'; this.style.color='#FFA116'" style="
+        background-color: transparent;
+        border: 2px solid #FFA116;
+        padding: 10px 28px;
+        font-size: 0.95rem;
+        border-radius: 25px;
+        color: #FFA116;
+        cursor: pointer;
+        font-family: 'Roboto Mono', monospace;
+        transition: all 0.2s;
+        letter-spacing: 0.05em;
+      ">🧩 View Full LeetCode Profile</button>
               </a>
+
             </div>
             <!-- LeetCode Stats End -->
           </section>
@@ -14561,6 +14700,9 @@
   <!-- Script to fetch live LeetCode profile data -->
   <script>
     (async function () {
+
+      // ── Fetch Stats ──────────────────────────────────────────
+      let submissionCalendar = {};
       try {
         const res = await fetch('https://leetcode-stats-api.herokuapp.com/utcarsh');
         const data = await res.json();
@@ -14568,33 +14710,116 @@
         // Rank
         const rankEl = document.getElementById('lc-rank');
         if (rankEl) rankEl.textContent = data.ranking
-          ? '🏆 Rank #' + data.ranking.toLocaleString()
-          : 'Rank unavailable';
+          ? '🏆 Rank #' + Number(data.ranking).toLocaleString()
+          : 'Unranked';
 
-        // Total solved
-        const solvedEl = document.getElementById('lc-solved');
-        if (solvedEl && data.totalSolved)
-          solvedEl.textContent = '✅ ' + data.totalSolved + ' solved';
-
-        // Difficulty breakdown
-        const badgesEl = document.getElementById('lc-badges');
-        if (badgesEl)
-          badgesEl.textContent = '🟢 ' + (data.easySolved || 0)
-            + '  🟡 ' + (data.mediumSolved || 0)
-            + '  🔴 ' + (data.hardSolved || 0);
+        // Solved counts
+        const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val ?? '--'; };
+        set('lc-total', data.totalSolved);
+        set('lc-easy', data.easySolved);
+        set('lc-medium', data.mediumSolved);
+        set('lc-hard', data.hardSolved);
 
         // Active days
-        const activeDaysEl = document.getElementById('lc-active-days');
-        if (activeDaysEl && data.submissionCalendar) {
-          const activeDays = Object.keys(data.submissionCalendar).length;
-          activeDaysEl.textContent = '📅 Total active days: ' + activeDays;
+        if (data.submissionCalendar) {
+          submissionCalendar = data.submissionCalendar;
+          const days = Object.keys(data.submissionCalendar).length;
+          set('lc-active-days', days);
         }
 
       } catch (e) {
+        console.log('LeetCode stats fetch failed', e);
         const rankEl = document.getElementById('lc-rank');
-        if (rankEl) rankEl.textContent = 'Stats unavailable';
-        console.log('LeetCode fetch failed', e);
+        if (rankEl) rankEl.textContent = 'Unavailable';
       }
+
+      // ── Draw Heatmap ─────────────────────────────────────────
+      const canvas = document.getElementById('lc-heatmap');
+      if (!canvas) return;
+
+      const CELL = 13;   // cell size px
+      const GAP = 3;    // gap between cells
+      const STEP = CELL + GAP;
+      const WEEKS = 53;
+      const DAYS = 7;
+      const TOP_PADDING = 24; // space for month labels
+      const LEFT_PADDING = 28; // space for day labels
+
+      const W = LEFT_PADDING + WEEKS * STEP;
+      const H = TOP_PADDING + DAYS * STEP;
+
+      canvas.width = W;
+      canvas.height = H;
+      canvas.style.width = '100%';
+      canvas.style.height = 'auto';
+
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, W, H);
+
+      // Build date→count map for last 365 days
+      const today = new Date();
+      const oneYear = new Date(today);
+      oneYear.setFullYear(today.getFullYear() - 1);
+
+      const countMap = {};
+      for (const [ts, cnt] of Object.entries(submissionCalendar)) {
+        const d = new Date(Number(ts) * 1000);
+        const key = d.toISOString().slice(0, 10);
+        countMap[key] = (countMap[key] || 0) + cnt;
+      }
+
+      // Color scale — vivid greens
+      function getColor(count) {
+        if (!count || count === 0) return '#1a1a1a';
+        if (count <= 2) return '#1a4d2e'; // dark green
+        if (count <= 5) return '#1e7a3e'; // medium
+        if (count <= 10) return '#25a244'; // bright
+        return '#2dcc57';                  // very bright
+      }
+
+      // Walk from start of week containing (today - 365 days)
+      const startDate = new Date(oneYear);
+      startDate.setDate(startDate.getDate() - startDate.getDay()); // go to Sunday
+
+      const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      let lastMonth = -1;
+
+      for (let w = 0; w < WEEKS; w++) {
+        for (let d = 0; d < DAYS; d++) {
+          const cur = new Date(startDate);
+          cur.setDate(startDate.getDate() + w * 7 + d);
+
+          if (cur > today) continue;
+
+          const key = cur.toISOString().slice(0, 10);
+          const count = countMap[key] || 0;
+          const x = LEFT_PADDING + w * STEP;
+          const y = TOP_PADDING + d * STEP;
+
+          // Draw cell
+          ctx.fillStyle = getColor(count);
+          ctx.beginPath();
+          ctx.roundRect(x, y, CELL, CELL, 3);
+          ctx.fill();
+
+          // Month label on first day (Sunday) of new month
+          if (d === 0 && cur.getMonth() !== lastMonth) {
+            lastMonth = cur.getMonth();
+            ctx.fillStyle = '#777';
+            ctx.font = '10px "Roboto Mono", monospace';
+            ctx.fillText(MONTH_NAMES[cur.getMonth()], x, TOP_PADDING - 6);
+          }
+        }
+      }
+
+      // Day labels
+      ctx.fillStyle = '#555';
+      ctx.font = '10px "Roboto Mono", monospace';
+      const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      [1, 3, 5].forEach(d => {
+        ctx.fillText(dayLabels[d], 0, TOP_PADDING + d * STEP + CELL - 2);
+      });
+
     })();
   </script>
 </body>
