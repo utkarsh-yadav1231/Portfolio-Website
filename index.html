@@ -14317,25 +14317,91 @@
               </div>
             </div>
 
-            <!-- LeetCode Stats -->
+            <!-- LeetCode Stats Starts-->
+            <!-- LeetCode Stats Section -->
             <div
-              style="display: flex; flex-direction: column; align-items: center; margin-top: 2.5rem; padding-bottom: 1rem;">
-              <img src="https://leetcard.jacoblin.cool/utcarsh?theme=dark&font=Roboto+Mono&ext=heatmap"
+              style="display: flex; flex-direction: column; align-items: center; margin-top: 2.5rem; padding-bottom: 1rem; width: 100%;">
+
+              <!-- Profile Header (fetched live) -->
+              <div id="lc-profile-header" style="
+    width: calc(100% - 2cm);
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 1.2rem 1.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border: 1px solid #333;
+  ">
+                <!-- Avatar -->
+                <img id="lc-avatar" src="" alt="LeetCode Avatar"
+                  style="width: 72px; height: 72px; border-radius: 50%; border: 3px solid #FFA116; object-fit: cover; background:#333;" />
+
+                <!-- Info -->
+                <div style="flex: 1;">
+                  <div style="display:flex; align-items:center; gap: 1rem; flex-wrap: wrap;">
+                    <span
+                      style="font-family:'Roboto Mono',monospace; font-size:1.3rem; color:#FFA116; font-weight:bold;">utcarsh</span>
+                    <span id="lc-rank"
+                      style="font-family:'Roboto Mono',monospace; font-size:0.95rem; color:#aaa;"></span>
+                  </div>
+                  <div style="margin-top: 0.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                    <span id="lc-badges"
+                      style="font-family:'Roboto Mono',monospace; font-size:0.9rem; color:#ccc;"></span>
+                    <span id="lc-solved"
+                      style="font-family:'Roboto Mono',monospace; font-size:0.9rem; color:#ccc;"></span>
+                  </div>
+                </div>
+
+                <!-- LeetCode logo link -->
+                <a href="https://leetcode.com/u/utcarsh/" target="_blank" rel="noopener noreferrer"
+                  style="margin-left:auto; font-family:'Roboto Mono',monospace; font-size:0.85rem; color:#FFA116; white-space:nowrap;">
+                  View Profile →
+                </a>
+              </div>
+
+              <!-- Stats + Heatmap card -->
+              <img src="https://leetcard.jacoblin.cool/utcarsh?theme=dark&font=Roboto+Mono&width=900&ext=heatmap"
                 alt="LeetCode Stats - utcarsh"
-                style="max-width: 480px; width: 100%; border-radius: 10px; margin-bottom: 1rem;" />
-              <a href="https://leetcode.com/u/utcarsh/" target="_blank" rel="noopener noreferrer">
+                style="width: calc(100% - 2cm); border-radius: 10px; margin-bottom: 0.6rem;" />
+
+              <!-- Per-year heatmaps -->
+              <div style="width: calc(100% - 2cm); display: flex; flex-direction: column; gap: 0.6rem;">
+                <img
+                  src="https://leetcard.jacoblin.cool/utcarsh?theme=dark&font=Roboto+Mono&width=900&ext=heatmap&year=2025&hide=solved,ranking"
+                  style="width:100%; border-radius:10px; display:block;" alt="2025" />
+                <img
+                  src="https://leetcard.jacoblin.cool/utcarsh?theme=dark&font=Roboto+Mono&width=900&ext=heatmap&year=2024&hide=solved,ranking"
+                  style="width:100%; border-radius:10px; display:block;" alt="2024" />
+                <img
+                  src="https://leetcard.jacoblin.cool/utcarsh?theme=dark&font=Roboto+Mono&width=900&ext=heatmap&year=2023&hide=solved,ranking"
+                  style="width:100%; border-radius:10px; display:block;" alt="2023" />
+                <img
+                  src="https://leetcard.jacoblin.cool/utcarsh?theme=dark&font=Roboto+Mono&width=900&ext=heatmap&year=2022&hide=solved,ranking"
+                  style="width:100%; border-radius:10px; display:block;" alt="2022" />
+                <img
+                  src="https://leetcard.jacoblin.cool/utcarsh?theme=dark&font=Roboto+Mono&width=900&ext=heatmap&year=2021&hide=solved,ranking"
+                  style="width:100%; border-radius:10px; display:block;" alt="2021" />
+              </div>
+
+              <!-- Profile Button -->
+              <a href="https://leetcode.com/u/utcarsh/" target="_blank" rel="noopener noreferrer"
+                style="margin-top: 1.2rem;">
                 <button style="
-                  background-color: transparent;
-                  border: 3px solid #FFA116;
-                  padding: 8px 20px;
-                  font-size: 1rem;
-                  border-radius: 0.25rem;
-                  color: #FFA116;
-                  cursor: pointer;
-                  font-family: 'Roboto Mono', monospace;
-                ">View LeetCode Profile 🧩</button>
+      background-color: transparent;
+      border: 3px solid #FFA116;
+      padding: 8px 20px;
+      font-size: 1rem;
+      border-radius: 0.25rem;
+      color: #FFA116;
+      cursor: pointer;
+      font-family: 'Roboto Mono', monospace;
+    ">View LeetCode Profile 🧩</button>
               </a>
+
             </div>
+            <!-- LeetCode Stats End -->
           </section>
         </div>
         <div class="contact-page">
@@ -14535,6 +14601,74 @@
   <script src="app-d6f81bf0ae1406e56b82.js" async=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="js/bootstrap.js"></script>
+  <!-- Script to fetch live LeetCode profile data -->
+  <script>
+    (async function () {
+      try {
+        const res = await fetch('https://leetcode-stats-api.herokuapp.com/utcarsh');
+        const data = await res.json();
+
+        if (data) {
+          // Rank
+          const rankEl = document.getElementById('lc-rank');
+          if (rankEl && data.ranking) {
+            rankEl.textContent = '🏆 Rank #' + data.ranking.toLocaleString();
+          }
+
+          // Solved
+          const solvedEl = document.getElementById('lc-solved');
+          if (solvedEl && data.totalSolved) {
+            solvedEl.textContent = '✅ ' + data.totalSolved + ' problems solved';
+          }
+        }
+      } catch (e) {
+        console.log('LeetCode stats fetch failed', e);
+      }
+
+      // Fetch avatar + badges via GraphQL
+      try {
+        const gqlRes = await fetch('https://leetcode.com/graphql', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            query: `{
+            matchedUser(username: "utcarsh") {
+              profile {
+                userAvatar
+                ranking
+              }
+              badges { id }
+            }
+          }`
+          })
+        });
+        const gqlData = await gqlRes.json();
+        const user = gqlData?.data?.matchedUser;
+
+        if (user) {
+          // Avatar
+          const avatarEl = document.getElementById('lc-avatar');
+          if (avatarEl && user.profile?.userAvatar) {
+            avatarEl.src = user.profile.userAvatar;
+          }
+
+          // Badges count
+          const badgesEl = document.getElementById('lc-badges');
+          if (badgesEl && user.badges) {
+            badgesEl.textContent = '🎖️ ' + user.badges.length + ' badges earned';
+          }
+
+          // Rank fallback from GraphQL
+          const rankEl = document.getElementById('lc-rank');
+          if (rankEl && !rankEl.textContent && user.profile?.ranking) {
+            rankEl.textContent = '🏆 Rank #' + user.profile.ranking.toLocaleString();
+          }
+        }
+      } catch (e) {
+        console.log('LeetCode GraphQL fetch failed', e);
+      }
+    })();
+  </script>
 </body>
 
 </html>
