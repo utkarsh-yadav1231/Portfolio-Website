@@ -14676,124 +14676,168 @@
   <script>
     (async function () {
 
-      // ── Fetch Stats ──────────────────────────────────────────
-      let submissionCalendar = {};
-      try {
-        const res = await fetch('https://leetcode-stats-api.herokuapp.com/utcarsh');
-        const data = await res.json();
+      // ── Try multiple APIs in order until one works ────────────
+      const APIs = [
+        {
+          url: 'https://alfa-leetcode-api.onrender.com/utcarsh',
+          parse: (d) => ({
+            ranking: d.profile?.ranking ?? d.ranking,
+            totalSolved: d.submitStats?.acSubmissionNum?.find(x => x.difficulty === 'All')?.count ?? d.totalSolved,
+            easySolved: d.submitStats?.acSubmissionNum?.find(x => x.difficulty === 'Easy')?.count ?? d.easySolved,
+            mediumSolved: d.submitStats?.acSubmissionNum?.find(x => x.difficulty === 'Medium')?.count ?? d.mediumSolved,
+            hardSolved: d.submitStats?.acSubmissionNum?.find(x => x.difficulty === 'Hard')?.count ?? d.hardSolved,
+            submissionCalendar: d.submissionCalendar ?? {},
+            badges: d.badges?.length ?? null,
+          })
+        },
+        {
+          url: 'https://leetcode-stats-api.herokuapp.com/utcarsh',
+          parse: (d) => ({
+            ranking: d.ranking,
+            totalSolved: d.totalSolved,
+            easySolved: d.easySolved,
+            mediumSolved: d.mediumSolved,
+            hardSolved: d.hardSolved,
+            submissionCalendar: d.submissionCalendar ?? {},
+            badges: null,
+          })
+        },
+        {
+          url: 'https://leetcode-stats.tashif.codes/utcarsh',
+          parse: (d) => ({
+            ranking: d.ranking,
+            totalSolved: d.totalSolved,
+            easySolved: d.easySolved,
+            mediumSolved: d.mediumSolved,
+            hardSolved: d.hardSolved,
+            submissionCalendar: d.submissionCalendar ?? {},
+            badges: null,
+          })
+        }
+      ];
 
-        // Rank
-        const rankEl = document.getElementById('lc-rank');
-        if (rankEl) rankEl.textContent = data.ranking
-          ? '🏆 Rank #' + Number(data.ranking).toLocaleString()
-          : 'Unranked';
+      let stats = null;
+      for (const api of APIs) {
+        try {
+          const res = await fetch(api.url);
+          if (!res.ok) continue;
+          const raw = await res.json();
+          stats = api.parse(raw);
+          if (stats.totalSolved) break; // success
+        } catch (e) {
+          console.log('API failed, trying next...', api.url);
+        }
+      }
 
-        // Solved counts
-        const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val ?? '--'; };
-        set('lc-total', data.totalSolved);
-        set('lc-easy', data.easySolved);
-        set('lc-medium', data.mediumSolved);
-        set('lc-hard', data.hardSolved);
+      // ── Populate DOM ──────────────────────────────────────────
+      const set = (id, val) => {
+        const el = document.getElementById(id);
+        if (el && val != null) el.textContent = val;
+      };
 
-        // Active days
-        if (data.submissionCalendar) {
-          submissionCalendar = data.submissionCalendar;
-          const days = Object.keys(data.submissionCalendar).length;
-          set('lc-active-days', days);
+      if (stats) {
+        set('lc-rank', stats.ranking ? '🏆 Rank #' + Number(stats.ranking).toLocaleString() : 'Unranked');
+        set('lc-total', stats.totalSolved);
+        set('lc-easy', stats.easySolved);
+        set('lc-medium', stats.mediumSolved);
+        set('lc-hard', stats.hardSolved);
+        set('lc-active-days', stats.submissionCalendar
+          ? Object.keys(stats.submissionCalendar).length
+          : '--');
+
+        // Draw heatmap with real data
+        drawHeatmap(stats.submissionCalendar || {});
+      } else {
+        set('lc-rank', 'Stats unavailable');
+        drawHeatmap({});
+      }
+
+      // ── Draw Heatmap ──────────────────────────────────────────
+      function drawHeatmap(submissionCalendar) {
+        const canvas = document.getElementById('lc-heatmap');
+        if (!canvas) return;
+
+        const CELL = 13;
+        const GAP = 3;
+        const STEP = CELL + GAP;
+        const WEEKS = 53;
+        const DAYS = 7;
+        const TOP_PADDING = 24;
+        const LEFT_PADDING = 30;
+
+        const W = LEFT_PADDING + WEEKS * STEP;
+        const H = TOP_PADDING + DAYS * STEP;
+
+        canvas.width = W;
+        canvas.height = H;
+        canvas.style.width = '100%';
+        canvas.style.height = 'auto';
+
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, W, H);
+
+        // Build date → count map
+        const countMap = {};
+        for (const [ts, cnt] of Object.entries(submissionCalendar)) {
+          const d = new Date(Number(ts) * 1000);
+          const key = d.toISOString().slice(0, 10);
+          countMap[key] = (countMap[key] || 0) + Number(cnt);
         }
 
-      } catch (e) {
-        console.log('LeetCode stats fetch failed', e);
-        const rankEl = document.getElementById('lc-rank');
-        if (rankEl) rankEl.textContent = 'Unavailable';
-      }
+        // Color scale — vivid greens
+        function getColor(count) {
+          if (!count) return '#1e1e1e';
+          if (count <= 2) return '#1a5c35';
+          if (count <= 5) return '#1e8c45';
+          if (count <= 10) return '#26b554';
+          return '#2ddd66';
+        }
 
-      // ── Draw Heatmap ─────────────────────────────────────────
-      const canvas = document.getElementById('lc-heatmap');
-      if (!canvas) return;
+        const today = new Date();
+        const oneYear = new Date(today);
+        oneYear.setFullYear(today.getFullYear() - 1);
 
-      const CELL = 13;   // cell size px
-      const GAP = 3;    // gap between cells
-      const STEP = CELL + GAP;
-      const WEEKS = 53;
-      const DAYS = 7;
-      const TOP_PADDING = 24; // space for month labels
-      const LEFT_PADDING = 28; // space for day labels
+        const startDate = new Date(oneYear);
+        startDate.setDate(startDate.getDate() - startDate.getDay()); // rewind to Sunday
 
-      const W = LEFT_PADDING + WEEKS * STEP;
-      const H = TOP_PADDING + DAYS * STEP;
+        const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        let lastMonth = -1;
 
-      canvas.width = W;
-      canvas.height = H;
-      canvas.style.width = '100%';
-      canvas.style.height = 'auto';
+        for (let w = 0; w < WEEKS; w++) {
+          for (let d = 0; d < DAYS; d++) {
+            const cur = new Date(startDate);
+            cur.setDate(startDate.getDate() + w * 7 + d);
+            if (cur > today) continue;
 
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, W, H);
+            const key = cur.toISOString().slice(0, 10);
+            const count = countMap[key] || 0;
+            const x = LEFT_PADDING + w * STEP;
+            const y = TOP_PADDING + d * STEP;
 
-      // Build date→count map for last 365 days
-      const today = new Date();
-      const oneYear = new Date(today);
-      oneYear.setFullYear(today.getFullYear() - 1);
+            // Cell
+            ctx.fillStyle = getColor(count);
+            ctx.beginPath();
+            ctx.roundRect(x, y, CELL, CELL, 3);
+            ctx.fill();
 
-      const countMap = {};
-      for (const [ts, cnt] of Object.entries(submissionCalendar)) {
-        const d = new Date(Number(ts) * 1000);
-        const key = d.toISOString().slice(0, 10);
-        countMap[key] = (countMap[key] || 0) + cnt;
-      }
-
-      // Color scale — vivid greens
-      function getColor(count) {
-        if (!count || count === 0) return '#1a1a1a';
-        if (count <= 2) return '#1a4d2e'; // dark green
-        if (count <= 5) return '#1e7a3e'; // medium
-        if (count <= 10) return '#25a244'; // bright
-        return '#2dcc57';                  // very bright
-      }
-
-      // Walk from start of week containing (today - 365 days)
-      const startDate = new Date(oneYear);
-      startDate.setDate(startDate.getDate() - startDate.getDay()); // go to Sunday
-
-      const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      let lastMonth = -1;
-
-      for (let w = 0; w < WEEKS; w++) {
-        for (let d = 0; d < DAYS; d++) {
-          const cur = new Date(startDate);
-          cur.setDate(startDate.getDate() + w * 7 + d);
-
-          if (cur > today) continue;
-
-          const key = cur.toISOString().slice(0, 10);
-          const count = countMap[key] || 0;
-          const x = LEFT_PADDING + w * STEP;
-          const y = TOP_PADDING + d * STEP;
-
-          // Draw cell
-          ctx.fillStyle = getColor(count);
-          ctx.beginPath();
-          ctx.roundRect(x, y, CELL, CELL, 3);
-          ctx.fill();
-
-          // Month label on first day (Sunday) of new month
-          if (d === 0 && cur.getMonth() !== lastMonth) {
-            lastMonth = cur.getMonth();
-            ctx.fillStyle = '#777';
-            ctx.font = '10px "Roboto Mono", monospace';
-            ctx.fillText(MONTH_NAMES[cur.getMonth()], x, TOP_PADDING - 6);
+            // Month label on first Sunday of a new month
+            if (d === 0 && cur.getMonth() !== lastMonth) {
+              lastMonth = cur.getMonth();
+              ctx.fillStyle = '#888';
+              ctx.font = '10px "Roboto Mono", monospace';
+              ctx.fillText(MONTH_NAMES[cur.getMonth()], x, TOP_PADDING - 7);
+            }
           }
         }
-      }
 
-      // Day labels
-      ctx.fillStyle = '#555';
-      ctx.font = '10px "Roboto Mono", monospace';
-      const dayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      [1, 3, 5].forEach(d => {
-        ctx.fillText(dayLabels[d], 0, TOP_PADDING + d * STEP + CELL - 2);
-      });
+        // Day labels
+        ctx.fillStyle = '#555';
+        ctx.font = '10px "Roboto Mono", monospace';
+        [1, 3, 5].forEach(d => {
+          const labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          ctx.fillText(labels[d], 0, TOP_PADDING + d * STEP + CELL - 2);
+        });
+      }
 
     })();
   </script>
